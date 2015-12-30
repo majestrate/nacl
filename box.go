@@ -86,5 +86,10 @@ func CryptoBoxOpen(box, nounce, sk, pk []byte) ([]byte, error) {
 
 // generate a new nounce
 func NewBoxNounce() []byte {
-  return RandBytes(int(C.crypto_box_macbytes()))
+  return RandBytes(NounceLen())
+}
+
+// length of a nounce
+func NounceLen() int {
+  return int(C.crypto_box_macbytes())
 }
